@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block nodes %}
+
+{% for block in blocks %}
+<div class="form-group">
+    <label for="exampleFormControlTextarea1">Block  {{block}}</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">{{blocks[block]}}</textarea>
+  </div>
+
+  <p>
+    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Block  {{block}}
+    </a>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      Button with data-target
+    </button>
+  </p>
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body">
+        {{blocks[block]}}
+    </div>
+  </div>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block nodes %}
+
+<div class="form-group">
+    <label for="exampleFormControlTextarea1">Block  {{block}}</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">{{blocks[block]}}</textarea>
+  </div>
+</form>
+
+{% endblock %}

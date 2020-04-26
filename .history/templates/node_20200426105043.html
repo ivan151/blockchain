@@ -1,0 +1,15 @@
+
+{% extends 'base.html' %}
+{% block node %}
+<h1> Node {{number}}</h1>
+{% for block in blocks %}
+<div class="alert alert-light block" role="alert">
+<p>Block {{block}}</p>
+{% for key in blocks[block] %}
+    <p>{{ key }} {{blocks[block][key]}}</p>
+{% endfor %}
+</div>  
+
+{% endfor %}
+
+{% endblock %}

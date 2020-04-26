@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{{word}}
+{% block nodes %}
+{% for block in blocks %}
+<div class="alert alert-primary" role="alert">
+    <p>Block  {{block}}</p>
+    <p>{{blocks[block]}}</p>
+  </div>
+           
+        
+{% endfor %}
+{% endblock %}

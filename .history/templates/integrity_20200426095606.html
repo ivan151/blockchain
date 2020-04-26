@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block integrity %}
+<div class="alert alert-light" role="alert"></div>
+<br><br>
+<a href="{{url_for('restore')}}"><button type="button" class="btn btn-outline-secondary">Restore integrity</button></a>
+<br><br>
+{% for block in results %}
+<div class="alert alert-light block" role="alert">
+    {% for block,result in block.items() %}<p>{{block,result}}</p>{% endfor %}
+  </div>
+           
+        
+{% endfor %}
+
+{% endblock %}
+
+

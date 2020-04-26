@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block blockchain %}
+<br>
+<a href="{{url_for('check_integrity')}}"><button type="button" class="btn btn-primary btn-lg">check integrity</button></a>
+<br><br><br>
+
+{% for block in blocks %}
+       <p>Block {{ block }}</p>
+       <p>{{blocks[block]}}</p>
+{% endfor %}
+
+{% endblock %}
+
+

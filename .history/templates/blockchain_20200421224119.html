@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block blockchain %}
+
+{% for block in blocks %}
+
+            {{block}} {{blocks[block]}}
+
+{% endfor %}
+
+{% endblock %}
+
+

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block edit %}
+{{edited}}
+<form action="{{url_for('edit', num=number)}}" method='POST'>
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1" >Block {{number}}</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="change">{{block}}</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">Save changes</button>
+</form>
+{% endblock %}

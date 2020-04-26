@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+
+    {% block content %}
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Simple blockchain system</h1>
+            <p class="lead">Hi! This site is&nbsp;created to&nbsp;show how blockchain works. The main idea
+                of&nbsp;blockchain is&nbsp;that every action of&nbsp;its members is&nbsp;written to&nbsp;the block. And
+                every next block keeps information about previous block&rsquo;s &laquo;hash&raquo;. That&rsquo;s why you
+                can&rsquo;t violate the integrity of&nbsp;the chain. Each block in&nbsp;such system is&nbsp;forever
+                That&rsquo;s what this site demonstrates</p>
+            <p class="lead">To&nbsp;understand this better, create a new user or&nbsp;add a&nbsp;transation to&nbsp;blockchain. You
+                will see how every your action will create a&nbsp;new block with hash of&nbsp;the previous one. </p>
+                <p class="lead">Check integrity of the blocks. </p>
+                <p class="lead">Let's say you are hacker. Try to corrupt some block. Even if you're lucky and make it, the system will repair itself</p>
+                <p class="lead">But what if you corrupt the last block? That means you can then change each block one by one. Nope. It's not that simple because of Nodes. Every node in the system remembers this last block. To corrupt it you should to have an access to more than half of the nodes. Otherwise the system will just ignore modified block</p>  
+                <p class="lead">Ok. Now, when you know it, try to corrupt the last block in more than half of the nodes. It's not a corruption anymore! This is a legal change with the consent of the majority of participants.    </p>      
+        </div>
+    </div>
+    <form action="{{ url_for('index') }}" method="POST">
+        <div class="form-group">
+            <label for="exampleInputEmail1">User</label>
+            <input type="text" class="form-control" id="lender" aria-describedby="emailHelp" placeholder="Enter name"
+                name="name">
+            <small id="emailHelp" class="form-text text-muted">This form will create a new user with public and private
+                keys</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>

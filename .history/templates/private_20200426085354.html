@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block private %}
+
+{% if confirmation %}
+<p>{{confirmation}}</p>
+<p>{{block}}</p>
+{% else %}
+<div class="alert alert-light" role="alert">
+    as we said, you must enter a private key to send funds. If the transaction is accepted by most nodes, then it will
+    be written to the blockchain. Otherwise, it will be rejected.
+</div>
+<div class="form-box my-form">
+    <form action-'/transaction/private' method="POST">
+        <input class="form-control" type="text" placeholder="{{from_whom}}" readonly>
+        <input class="form-control" type="text" placeholder="{{to_whom}}" readonly>
+        <input class="form-control" type="text" placeholder="{{amount}}" readonly>
+        <div class="form-group">
+            <br><label for="exampleInputPassword1">Private Key</label>
+            <input type="password" class="form-control" id="private" placeholder="Enter Private key" name="private">
+        </div>
+        {% if sender_private_key %}
+        <div class="alert alert-light" role="alert">
+            Hint: {{sender_private_key}}
+        </div>
+        {% endif %}
+        
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="1" name="node1">
+            <label class="form-check-label" for="inlineCheckbox1">Node1</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="2" name="node2">
+            <label class="form-check-label" for="inlineCheckbox2">Node2</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="3" name="node3">
+            <label class="form-check-label" for="inlineCheckbox2">Node3</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="4" name="node4">
+            <label class="form-check-label" for="inlineCheckbox2">Node4</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="5" name="node5">
+            <label class="form-check-label" for="inlineCheckbox2">Node5</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="6" name="node6">
+            <label class="form-check-label" for="inlineCheckbox2">Node6</label>
+        </div>
+        <br><br>
+        <button type="submit" class="btn btn-outline-secondary">Send</button>
+    </form>
+</div>
+
+
+{% if wrong %}
+<div class="alert alert-danger" role="alert">{{wrong}}</div>
+{% endif %}
+
+{% if deny %}
+<div class="alert alert-danger" role="alert"> {{deny}} </div>
+<script>    
+    window.setTimeout(function(){
+
+      // Move to a new location or you can do something else
+      window.location.href = "/";
+
+      }, 5000);
+
+</script>
+{% endif %}
+
+
+{% endif %}
+
+{% endblock %}

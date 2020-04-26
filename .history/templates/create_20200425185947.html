@@ -1,0 +1,32 @@
+
+{% extends 'base.html' %}
+
+{% block create %}
+<div class="card">
+    <div class="card-header">
+      Quote
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <p>Let's imagine that in this system every new user receive 100 coins. When new user registers with the system, he receives a public key. It is needed so that other participants can transfer funds to the user. But access to funds can only be obtained by someone who has a private key</p>
+      </blockquote>
+    </div>
+  </div>
+<form action="{{ url_for('index') }}" method="POST">
+    <div class="form-group">
+        <label for="exampleInputEmail1">User</label>
+        <input type="text" class="form-control" id="lender" aria-describedby="emailHelp" placeholder="Enter name"
+            name="name">
+        <small id="emailHelp" class="form-text text-muted">This form will create a new user with public and private
+            keys</small>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<div class="all_users">
+    {% for user in users %}
+    <p>{{ user.public_key }} --- {{user.balance}}</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

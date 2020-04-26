@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block private %} 
+    <div class="form-box">
+<form action-'/transaction/private' method="POST">
+    <input class="form-control" type="text" placeholder="{{from_whom}}" readonly>
+    <input class="form-control" type="text" placeholder="{{to_whom}}" readonly>
+    <input class="form-control" type="text" placeholder="{{amount}}" readonly>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Private Key</label>
+        <input type="password" class="form-control" id="private" placeholder="Enter Private key" name="private">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+<p>{{confirmation}}</p>
+<p>{{wrong}}</p>
+
+{% endblock %}
+

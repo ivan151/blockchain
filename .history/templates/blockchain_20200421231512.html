@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block blockchain %}
+<button type="button" class="btn btn-primary btn-lg">check integrity</button>
+{% for block in blocks %}
+<div class="alert alert-primary" role="alert">
+    <p>Block  {{block}}</p>
+    <p>{{blocks[block]}}</p>
+  </div>
+           
+        
+{% endfor %}
+
+{% endblock %}
+
+

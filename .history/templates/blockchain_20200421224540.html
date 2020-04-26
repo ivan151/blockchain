@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block blockchain %}
+
+{% for block in blocks %}
+<div class="alert alert-primary" role="alert">
+    Block  {{block}}
+  </div>
+           
+        
+{% endfor %}
+
+{% endblock %}
+
+

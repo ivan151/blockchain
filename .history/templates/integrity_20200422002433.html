@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block integrity %}
+<br><br><br>
+{% for block in results %}
+<div class="alert alert-primary" role="alert">
+    {% for block,result in block.items() %}<p>{{block,result}}</p>{% endfor %}
+  </div>
+           
+        
+{% endfor %}
+
+{% endblock %}
+
+

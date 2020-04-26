@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    {% block content %}
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Simple blockchain system</h1>
+            <p class="lead">Hi! This site is&nbsp;created to&nbsp;show how blockchain works. The main idea
+                of&nbsp;blockchain is&nbsp;that every action of&nbsp;its members is&nbsp;written to&nbsp;the block. And
+                every next block keepinformation about previous block&rsquo;s &laquo;hash&raquo;. That&rsquo;s why you
+                can&rsquo;t violate the integrity of&nbsp;the chain. Each block in&nbsp;such system is&nbsp;forever/
+                That&rsquo;s what this site demonstrates</p>
+            <p class="lead">To&nbsp;understand this better, create new user or&nbsp;add a&nbsp;transation to&nbsp;blockchain. You
+                will how every your action will create a&nbsp;new block with hash of&nbsp;the previous one. </p>
+        </div>
+    </div>
+    <form action="{{ url_for('index') }}" method="POST">
+        <div class="form-group">
+            <label for="exampleInputEmail1">User</label>
+            <input type="text" class="form-control" id="lender" aria-describedby="emailHelp" placeholder="Enter name"
+                name="name">
+            <small id="emailHelp" class="form-text text-muted">This form will create a new user with public and private
+                keys</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div class="all_users">
+        {% for user in users %}
+        <p>{{ user.public_key }} --- {{user.balance}}</p>
+        {% endfor %}
+
+
+    </div>
+    {% endblock %}
+</body>
+
+</html>

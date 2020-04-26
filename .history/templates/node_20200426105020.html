@@ -1,0 +1,16 @@
+
+{% extends 'base.html' %}
+{% block node %}
+<h1> Node {{number}}</h1>
+{% for block in blocks %}
+<div class="alert alert-light block" role="alert">
+<p>Block {{block}}</p>
+{% for key in blocks[block] %}
+    <p>{{ key }} {{blocks[block][key]}}</p>
+{% endfor %}
+<a href="{{url_for('edit',num=block)}}"> <button type="button" class="btn btn-outline-secondary">Corrupt this block</button></a>
+</div>  
+
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block integrity %}
+<div class="alert alert-light" role="alert">If the system sees a damaged block, it will restore from the backup the block that contains the correct hash. Click "restore integrity" button to make it</div>
+<a href="{{url_for('restore')}}"><button type="button" class="btn btn-outline-secondary">Restore integrity</button></a>
+<br><br>
+{% for block in results %}
+<div class="alert alert-light block" role="alert">
+    {% for block,result in block.items() %}<p>{{block,result}}</p>{% endfor %}
+  </div>
+           
+        
+{% endfor %}
+
+{% endblock %}
+
+

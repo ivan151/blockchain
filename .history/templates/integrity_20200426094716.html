@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block integrity %}
+<div class="alert alert-light" role="alert">Here, anyone can see all the blocks of&nbsp;the system. Each block contains a&nbsp;hash of&nbsp;the previous one. Try
+to&nbsp;change any block and check the integrity of&nbsp;the blockchain. The system will show which block has been
+damaged.</div>
+<br><br>
+<a href="{{url_for('restore')}}"><button type="button" class="btn btn-outline-secondary">Restore integrity</button></a>
+<br><br>
+{% for block in results %}
+<div class="alert alert-light block" role="alert">
+    {% for block,result in block.items() %}<p>{{block,result}}</p>{% endfor %}
+  </div>
+           
+        
+{% endfor %}
+
+{% endblock %}
+
+
