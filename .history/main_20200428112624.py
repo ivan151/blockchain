@@ -67,7 +67,6 @@ def transaction():
                                      to_whom=receiver_public_key, amount=amount)
                 sender.balance -= int(amount)
                 receiver.balance += int(amount)
-                db.session.commit()
                 return render_template('transactions.html', confirmation ='Transaction added to the blockchain!', block = block_data)
             else:
                 wrong = 'The Private Key is incorrect'
