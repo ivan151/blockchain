@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block transaction %}
+<div class="alert alert-light" role="alert">
+    To send coins to someone you need to know his public key, as well as your public and private keys.
+</div>
+
+{% if confirmation %}
+<div class="alert alert-success" role="alert"><p>{{confirmation}}</p><p>{{block}}</p></div>
+<script>    
+    window.setTimeout(function(){
+
+      // Move to a new location or you can do something else
+      window.location.href = "http://127.0.0.1:5000/blockchain/";
+
+      }, 3000);
+
+</script>
+{% else %}
+<div class="alert alert-light" role="alert">
+    As we said, you must enter a private key to send funds. If the transaction is accepted by most nodes, then it will
+    be written to the blockchain. Otherwise, it will be rejected.
+</div>
+
+{% endif %}
+
+{% if wrong %}
+<div class="alert alert-danger my-alert" role="alert">{{wrong}}</div>
+<script>    
+    window.setTimeout(function(){
+
+      // Move to a new location or you can do something else
+      window.location.href = "http://127.0.0.1:5000/transaction/";
+
+      }, 3000);
+
+</script>
+{% endif %}
+
+
+
+{% if sender %}
+<div class="form-box my-form">
+    <form action-'/transaction/private' method="POST">
+        <input class="form-control" type="text" placeholder="{{sender}}" readonly name="read_only_sender">
+        <input class="form-control" type="text" placeholder="{{receiver}}" readonly name="read_only_receiver">
+        <input class="form-control" type="text" placeholder="{{amount}}" readonly name="read_only_amount">
+        <div class="form-group">
+            <br><label for="exampleInputPassword1">Private Key</label>
+            <input type="password" class="form-control" id="private" placeholder="Enter Private key" name="private">
+        </div>
+        {% if sender_private_key %}
+        <div class="alert alert-light" role="alert">
+            Hint: {{sender_private_key}}
+        </div>
+        {% endif %}
+
+
+        <br><br>
+        <button type="submit" class="btn btn-outline-secondary">Send</button>
+    </form>
+</div>
+{% else %}
+<div class="form-box my-form">
+
+    <form action="{{url_for('transaction')}}" method="POST">
+        <div class="form-group">
+            <label for="exampleInputPassword1">From</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="from">
+                {% for user in users %}
+                <option>{{user.public_key}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">To</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="to">
+                {% for user in users %}
+                <option>{{user.public_key}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Amount</label>
+            <input type="text" class="form-control" id="amount" placeholder="enter amount..." name="amount">
+        </div>
+        <button type="submit" class="btn btn-outline-secondary">send</button>
+    </form>
+</div>
+{% endif %}
+{% endblock %}
